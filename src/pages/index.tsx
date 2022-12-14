@@ -25,7 +25,7 @@ const IndexPage: NextPage = () => {
     <div className="relative min-h-screen w-full p-14 pt-16">
       <Head>
         <title>Home</title>
-        <link rel="icon" href="/thunder-hero.png" />
+        <link rel="icon" href="/codenative.ico" />
       </Head>
 
       {/* Hero section */}
