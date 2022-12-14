@@ -1,3 +1,57 @@
+@import-normalize;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  body .reflex-container.horizontal > .reflex-splitter {
+    @apply h-0.5 w-full border-0 bg-gray-700 transition duration-100 ease-linear;
+  }
+  body .reflex-container.vertical > .reflex-splitter {
+    @apply h-full w-0.5 border-0 bg-gray-700 transition duration-100 ease-linear;
+  }
+
+  body .reflex-container.horizontal > .reflex-splitter.active,
+  body .reflex-container.horizontal > .reflex-splitter:hover,
+  body .reflex-container.vertical > .reflex-splitter.active,
+  body .reflex-container.vertical > .reflex-splitter:hover {
+    @apply border-0 bg-blue-400;
+  }
+}
+
+@layer components {
+  .bg-color {
+    @apply bg-black;
+  }
+
+  .bg-header {
+    @apply bg-black shadow-xl;
+  }
+
+  .bg-button {
+    @apply rounded-md bg-gradient-to-r from-indigo-500 to-blue-500 px-4 py-1;
+  }
+  .bg-button:hover {
+    @apply bg-gradient-to-r from-blue-500 to-indigo-500;
+  }
+
+  .text-gradient-hero {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text p-1 font-bold text-transparent;
+  }
+}
