@@ -27,7 +27,6 @@
       "@assets/*": ["assets/*"],
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
-      "@types/*": ["types/*"],
       "@interfaces/*": ["interfaces/*"],
       "@config/*": ["config/*"]
     },

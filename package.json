@@ -18,6 +18,7 @@
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.9.4",
     "@mantine/hooks": "^5.9.4",
+    "@monaco-editor/react": "^4.4.6",
     "@tanstack/react-query": "^4.19.1",
     "@tanstack/react-query-devtools": "^4.19.1",
     "axios": "^1.2.1",
@@ -26,9 +27,15 @@
     "next-auth": "^4.18.6",
     "next-progress": "^2.2.0",
     "react": "18.2.0",
+    "react-content-loader": "^6.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
-    "urql": "^3.0.3"
+    "react-icons": "^4.7.1",
+    "react-reflex": "^4.0.9",
+    "socket.io-client": "^4.5.4",
+    "urql": "^3.0.3",
+    "vscode-codicons": "^0.0.17",
+    "xterm": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "18.11.15",

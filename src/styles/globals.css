@@ -1,4 +1,9 @@
 @import-normalize;
+@import './SidebarStyles.css';
+@import 'react-reflex/styles.css';
+@import 'vscode-codicons/dist/codicon.css';
+@import 'xterm/css/xterm.css';
+@import './terminal.css';
 
 @tailwind base;
 @tailwind components;
@@ -32,6 +37,15 @@
   body .reflex-container.vertical > .reflex-splitter.active,
   body .reflex-container.vertical > .reflex-splitter:hover {
     @apply border-0 bg-blue-400;
+  }
+
+  .windowContainer {
+    @apply h-screen w-full text-white;
+    background-color: #1f2428;
+  }
+
+  .terminalContainer {
+    background-color: #16191d;
   }
 }
 
