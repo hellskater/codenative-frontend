@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   });
   const [socket, setSocket] = useState<Socket | null>(null);
   const [appDomain, setAppDomain] = useState<string>();
-  const [filesAndFolders, setFilesAndFolders] = useState<Files[]>([]);
+  const [files, setFiles] = useState<Files[]>([]);
 
   const [currentFile, setCurrentFile] = useState<string>('');
   const [currentFileContent, setCurrentFileContent] = useState<string>('');
@@ -108,11 +108,11 @@ const Home: NextPage = () => {
   }, [user]);
 
   useEffect(() => {
-    if (filesAndFolders.length > 0) {
-      updateCurrentFile(filesAndFolders[0].name);
+    if (files.length > 0) {
+      if (!currentFile) updateCurrentFile(files[0].name);
       refreshOutput(false);
     }
-  }, [filesAndFolders]);
+  }, [files]);
 
   useEffect(() => {
     if (socket) {
@@ -152,15 +152,15 @@ const Home: NextPage = () => {
             );
           });
 
-          setFilesAndFolders(files);
+          setFiles(files);
           return;
         }
         // Save fetched files to database
         else {
           socket.on('fileOutputWithContent', data => {
             const parsed = JSON.parse(data);
-            const fAndFolders = parsed.filesAndFolders;
-            setFilesAndFolders(fAndFolders);
+            const fAndFolders = parsed.files;
+            setFiles(fAndFolders);
 
             postFiles({
               files: fAndFolders,
@@ -177,7 +177,7 @@ const Home: NextPage = () => {
   }, [isFilesFetchingError, filesData]);
 
   function updateCurrentFile(file: string) {
-    const currFile = filesAndFolders.find(f => {
+    const currFile = files.find(f => {
       return f.name === file;
     });
 
@@ -210,7 +210,7 @@ const Home: NextPage = () => {
   }
 
   function updateFile(value: string) {
-    const file = filesAndFolders.find(file => file.name === currentFile);
+    const file = files.find(file => file.name === currentFile);
 
     if (file) {
       file.content = value;
@@ -232,10 +232,10 @@ const Home: NextPage = () => {
   }
 
   function addFile(file: any) {
-    const fAndFolders = filesAndFolders;
+    const fAndFolders = files;
     fAndFolders.push(file);
 
-    setFilesAndFolders(fAndFolders);
+    setFiles(fAndFolders);
   }
 
   return (
