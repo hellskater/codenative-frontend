@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import { BsCodeSlash } from 'react-icons/bs';
 
 // LANDING PAGE
 
@@ -50,11 +51,7 @@ const IndexPage: NextPage = () => {
 
         {/* Hero image */}
         <div className="relative hidden h-[30rem] w-[29rem] lg:flex">
-          {/* <Image
-            src={Thunder}
-            layout="fill"
-            className="h-full w-full object-cover brightness-150"
-          /> */}
+          <BsCodeSlash className="h-full w-full" />
         </div>
       </section>
     </div>
