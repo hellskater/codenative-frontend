@@ -56,7 +56,10 @@ function Terminal(props: TerminalProps) {
   }, [props.socket, terminal]);
 
   return (
-    <div className="terminal" ref={terminalDivRef}>
+    <div
+      className="terminal flex h-full w-full items-center justify-center text-xl"
+      ref={terminalDivRef}
+    >
       {!props.socket && 'Initializing terminal 🚀  ...'}
     </div>
   );

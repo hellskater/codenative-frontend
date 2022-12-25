@@ -18,6 +18,7 @@ import { useGetFiles, usePostFiles } from '@hooks/useFiles';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
+import CodeEditorLoader from '@components/CodeEditor/CodeEditorLoader';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -159,7 +160,7 @@ const Home: NextPage = () => {
         else {
           socket.on('fileOutputWithContent', data => {
             const parsed = JSON.parse(data);
-            const fAndFolders = parsed.files;
+            const fAndFolders = parsed.filesAndFolders;
             setFiles(fAndFolders);
 
             postFiles({
@@ -259,7 +260,7 @@ const Home: NextPage = () => {
             <ReflexElement flex={0.65}>
               <ReflexContainer orientation="horizontal">
                 <ReflexElement flex={0.8}>
-                  {currentFile && (
+                  {currentFile ? (
                     <CodeEditor
                       refreshOutput={refreshOutput}
                       updateFile={updateFile}
@@ -268,6 +269,8 @@ const Home: NextPage = () => {
                       currentFileLanguage={currentFileLanguage}
                       currentFile={currentFile}
                     ></CodeEditor>
+                  ) : (
+                    <CodeEditorLoader />
                   )}
                 </ReflexElement>
                 <ReflexSplitter />
