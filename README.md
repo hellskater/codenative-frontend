@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CodeNative
 
-## Getting Started
+Your local dev environment right in your favourite browser, faster and smoother.
 
-First, run the development server:
+# Run Locally
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Move into the root directory and run `npm install`, `npm run prepare`, `npm run dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Live demo
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Here is the live demo of the project hosted on Vercel. [http://app.codenative.click/](http://app.codenative.click/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Preview
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<img width="1512" alt="image" src="https://user-images.githubusercontent.com/47584722/209462359-34d17903-0aea-487e-809e-1afb14f1267d.png">
+<img width="1512" alt="image" src="https://user-images.githubusercontent.com/47584722/209462372-0f176bc9-c6e7-400f-84c1-f2fb23676ffd.png">
+<img width="1512" alt="image" src="https://user-images.githubusercontent.com/47584722/209462394-ac087976-2585-4313-b206-bac727d11770.png">
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Tech-Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- React, Next.js
+- Typescript
+- TailwindCSS
+- React Query
+- Mantine UI
+- React icons
+- graphql
+- socket.io-client
 
-## Deploy on Vercel
+## Additional libraries
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- next-auth
+- monaco-editor
+- xterm.js
+- urql
+- axios
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Features
+
+- User dashboard to create and view playgrounds.
+- A real-time code editor, terminal and file explorer connected to a docker container via socket.
+- Resizable windows.
+- Live preview
+- DB persist of code files on refresh and close.
+- Multiple users can access the service at once (dockerized user sessions).
+
+# Scripts
+
+- `npm run dev`: To start the development server on localhost
+- `npm run build`: To create a production build
