@@ -108,7 +108,7 @@ const Home: NextPage = () => {
   }, [user]);
 
   useEffect(() => {
-    if (files.length > 0) {
+    if (files?.length > 0) {
       if (!currentFile) updateCurrentFile(files[0].name);
       refreshOutput(false);
     }
@@ -185,7 +185,7 @@ const Home: NextPage = () => {
       setCurrentFile(file);
 
       const splitted = file.split('.');
-      const extension = splitted[splitted.length - 1];
+      const extension = splitted[splitted?.length - 1];
 
       setCurrentFileContent(currFile.content);
 
