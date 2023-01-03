@@ -14,6 +14,7 @@ const queryClient = new QueryClient();
 
 const urqlClient = createClient({
   url: 'https://api.codenative.click/graphql'
+  // url: 'http://localhost:1337/graphql'
 });
 
 export default function App({

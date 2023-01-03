@@ -13,12 +13,12 @@ import CodeEditor from '@components/CodeEditor/CodeEditor';
 
 import { Files } from '@interfaces/index';
 import { NextPage } from 'next';
-import axios from '@utils/axios';
 import { useGetFiles, usePostFiles } from '@hooks/useFiles';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import CodeEditorLoader from '@components/CodeEditor/CodeEditorLoader';
+import { config } from '@config/config';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -51,58 +51,31 @@ const Home: NextPage = () => {
 
   let timer: any;
 
-  const componentCleanup = () => {
-    const taskArn = localStorage.getItem('taskId');
-    axios
-      .post('ip/destroy', {
-        taskArn
-      })
-      .then(() => {
-        // eslint-disable-next-line no-console
-        console.log('Successfully destroyed the task');
-        localStorage.removeItem('taskId');
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.error(error);
-        localStorage.removeItem('taskId');
-      });
-    localStorage.setItem('leftPlayground', 'true');
-  };
-
   useEffect(() => {
-    const getIp = async () => {
-      axios
-        .post('ip/get', {
-          user,
-          projectName
-        })
-        .then(res => {
-          const ipData = res?.data?.data;
-          if (ipData) {
-            const { urls, taskArn } = ipData;
-            const { api, preview } = urls;
-            const terminalSocket = io(api, {
-              forceNew: false
-            });
-            setSocket(terminalSocket);
-            setAppDomain(preview);
-            localStorage.setItem('taskId', taskArn);
-          } else return;
-        })
-        .catch(error => {
-          // eslint-disable-next-line no-console
-          console.error(error);
-        });
+    const backendSocket = io(config.backendSocketUrl);
+    const getIp = () => {
+      backendSocket.on('response', (data: string) => {
+        const ipData = JSON.parse(data);
+
+        if (ipData) {
+          const { urls, taskArn } = ipData;
+          const { api, preview } = urls;
+          const terminalSocket = io(api, {
+            forceNew: false
+          });
+          setSocket(terminalSocket);
+          setAppDomain(preview);
+          localStorage.setItem('taskId', taskArn);
+        } else return;
+      });
+
+      backendSocket.emit('request', 'assignIp');
     };
 
     getIp();
 
-    window.addEventListener('beforeunload', componentCleanup);
-
     return () => {
-      componentCleanup();
-      window.removeEventListener('beforeunload', componentCleanup);
+      backendSocket.disconnect();
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
