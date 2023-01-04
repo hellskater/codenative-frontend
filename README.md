@@ -16,8 +16,6 @@ Your local dev environment right in your favourite browser, faster and smoother.
 <img width="1512" alt="image" src="https://user-images.githubusercontent.com/47584722/209462372-0f176bc9-c6e7-400f-84c1-f2fb23676ffd.png">
 <img width="1512" alt="image" src="https://user-images.githubusercontent.com/47584722/209462394-ac087976-2585-4313-b206-bac727d11770.png">
 
-
-
 # Tech-Stack
 
 - React, Next.js

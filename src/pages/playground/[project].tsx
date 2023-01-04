@@ -93,6 +93,21 @@ const Home: NextPage = () => {
       // Fetch Already Existing Files
       fetchFiles();
 
+      socket.on('fileOutputWithContent', data => {
+        const parsed = JSON.parse(data);
+        const fAndFolders = parsed.filesAndFolders;
+        setFiles(fAndFolders);
+
+        postFiles({
+          files: fAndFolders,
+          projectName,
+          user
+        }).catch(err => {
+          // eslint-disable-next-line no-console
+          console.error(err);
+        });
+      });
+
       socket.on('fileOutput', () => {
         socket.emit(
           'fileInput',
