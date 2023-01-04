@@ -48,29 +48,6 @@ const Playgrounds = () => {
 
   useEffect(() => {
     reexecuteQuery();
-  }, []);
-
-  // useEffect(() => {
-  //   // Listen for changes to the URL
-  //   const handleRouteChange = () => {
-  //     // Refresh the page when the URL changes
-  //     window.location.reload();
-  //   };
-  //   router.events.on('routeChangeComplete', handleRouteChange);
-
-  //   // Clean up the event listener when the component unmounts
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange);
-  //   };
-  // }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem('leftPlayground')) {
-      localStorage.removeItem('leftPlayground');
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-    }
   }, [router.pathname]);
 
   return (

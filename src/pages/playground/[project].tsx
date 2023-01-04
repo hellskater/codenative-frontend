@@ -81,12 +81,12 @@ const Home: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  // useEffect(() => {
-  //   if (files?.length > 0) {
-  //     if (!currentFile) updateCurrentFile(files[0].name);
-  //     refreshOutput(false);
-  //   }
-  // }, [files]);
+  useEffect(() => {
+    if (files?.length > 0) {
+      if (!currentFile) updateCurrentFile(files[0].name);
+      refreshOutput(false);
+    }
+  }, [files]);
 
   useEffect(() => {
     if (socket) {
