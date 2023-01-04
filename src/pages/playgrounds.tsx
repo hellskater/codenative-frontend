@@ -6,7 +6,6 @@ import HTML from '@assets/html-logo.png';
 import ViewPlaygroundCard from '@components/Playground/ViewPlaygroundCard';
 import CreatePlaygroundModal from '@components/Playground/CreatePlaygroundModal';
 import { StaticImageData } from 'next/image';
-import { useRouter } from 'next/router';
 import PlaygroundCardLoader from '@components/Playground/PlaygroundCardLoader';
 import Head from 'next/head';
 
@@ -25,7 +24,6 @@ type Playground = {
 };
 
 const Playgrounds = () => {
-  const router = useRouter();
   // To make sure the user is logged in to access this page
   const { data: session } = useSession({
     required: true
@@ -48,7 +46,7 @@ const Playgrounds = () => {
 
   useEffect(() => {
     reexecuteQuery();
-  }, [router.pathname]);
+  }, []);
 
   return (
     <div className="py-16 px-8">
