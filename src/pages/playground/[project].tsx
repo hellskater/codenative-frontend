@@ -84,10 +84,10 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (files?.length > 0) {
-      if (!currentFile) updateCurrentFile(files[0].name);
+      if (!currentFile && !isSidebarLoading) updateCurrentFile(files[0].name);
       refreshOutput(false);
     }
-  }, [files]);
+  }, [files, isSidebarLoading]);
 
   useEffect(() => {
     if (socket) {
