@@ -10,6 +10,8 @@ type SideBarProps = {
   updateCurrentFile: any;
   addFile: any;
   refreshOutput: any;
+  isSidebarLoading: boolean;
+  setIsSidebarLoading: (value: boolean) => void;
 };
 
 const extensions: { [x: string]: string } = {
@@ -23,11 +25,12 @@ const SideBar = ({
   socket,
   addFile,
   refreshOutput,
-  updateCurrentFile
+  updateCurrentFile,
+  isSidebarLoading,
+  setIsSidebarLoading
 }: SideBarProps) => {
   const [files, setFiles] = useState<Files[]>([]);
   const [addingNewFile, setAddingNewFile] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const addFileInputRef = useRef<HTMLInputElement>(null);
 
@@ -38,7 +41,7 @@ const SideBar = ({
 
       if (files) {
         setFiles(files);
-        setIsLoading(false);
+        setIsSidebarLoading(false);
       }
     }
 
@@ -154,7 +157,7 @@ const SideBar = ({
                 </div>
               )}
 
-              {!isLoading &&
+              {!isSidebarLoading &&
                 files.map(element => {
                   const splittedName = element.name.split('.');
                   const extension = splittedName[splittedName.length - 1];
@@ -200,7 +203,7 @@ const SideBar = ({
                   );
                 })}
 
-              {isLoading && (
+              {isSidebarLoading && (
                 <div>
                   {[...Array(3)].map((_, index) => (
                     <FileCardLoader key={index} />

@@ -34,6 +34,7 @@ const Home: NextPage = () => {
   const [currentFileLanguage, setCurrentFileLanguage] = useState<string>('');
   const [iFrameKey, setIFrameKey] = useState(Math.random());
   const [editorRows, setEditorRows] = useState(10);
+  const [isSidebarLoading, setIsSidebarLoading] = useState(true);
 
   const user = session?.user?.name as string;
   const projectName = router?.query?.project as string;
@@ -242,6 +243,8 @@ const Home: NextPage = () => {
                 updateCurrentFile={updateCurrentFile}
                 socket={socket}
                 refreshOutput={refreshOutput}
+                isSidebarLoading={isSidebarLoading}
+                setIsSidebarLoading={setIsSidebarLoading}
               />
             </ReflexElement>
             <ReflexSplitter />
@@ -287,6 +290,7 @@ const Home: NextPage = () => {
                 iFrameKey={iFrameKey}
                 src={appDomain}
                 refreshOutput={refreshOutput}
+                isSidebarLoading={isSidebarLoading}
               ></CodeOutput>
             </ReflexElement>
           </ReflexContainer>
