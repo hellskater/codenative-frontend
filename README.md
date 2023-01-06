@@ -8,7 +8,7 @@ Your local dev environment right in your favourite browser, faster and smoother.
 
 # Live demo
 
-- Here is the live demo of the project hosted on Vercel. [http://app.codenative.click/](http://app.codenative.click/)
+- Here is the live demo of the project hosted on Vercel. [https://codenative.click/](https://codenative.click/)
 
 # Preview
 
